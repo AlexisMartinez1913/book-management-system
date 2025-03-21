@@ -1,4 +1,6 @@
 using BookManagementSystem.Data;
+using BookManagementSystem.Interfaces;
+using BookManagementSystem.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,10 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//AGREGAR LOS SERVICIOS
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 var app = builder.Build();
 
