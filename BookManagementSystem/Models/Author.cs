@@ -21,7 +21,7 @@ namespace BookManagementSystem.Models
         public string City { get; set; }
 
         [Required]
-        [DisplayName("Correo Electronico")]
+        [DisplayName("Correo Electrónico")]
         public string Email { get; set; }
 
 
