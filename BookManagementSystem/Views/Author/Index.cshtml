@@ -1,0 +1,36 @@
+﻿@model List<BookManagementSystem.Dtos.AuthorDTO>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Lista De Autores</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Author" asp-action="Create" class="btn btn-primary">
+                Crear Nuevo Autor
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nombre Completo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Ciudad</th>
+            <th>Correo Electrónico</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.FullName</td>
+                <td>@author.BirthDate.ToString("dd/MM/yyyy")</td>
+                <td>@author.City</td>
+                <td>@author.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
