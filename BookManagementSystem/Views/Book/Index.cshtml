@@ -1,0 +1,54 @@
+﻿@model List<BookManagementSystem.Dtos.BookDTO>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Lista De Libros</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Book" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-person-plus-fill"></i>
+                Crear Nuevo Libro
+            </a>
+        </div>
+    </div>
+</div>
+
+@if (Model == null || !Model.Any()) 
+{
+    <p>No hay libros registrados</p>
+}
+
+else 
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Año</th>
+                <th>Género</th>
+                <th>Número De Páginas</th>
+                <th>Autor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Year</td>
+                    <td>@book.Genre</td>
+                    <td>@book.PageCount</td>
+                    <td>
+                        @{
+                            var authors = ViewBag.Authors as List<BookManagementSystem.Dtos.AuthorDTO>;
+                            var authorName = authors?.FirstOrDefault(a => a.Id == book.AuthorId)?.FullName ?? "Desconocido";
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}

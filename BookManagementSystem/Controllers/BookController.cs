@@ -18,6 +18,7 @@ namespace BookManagementSystem.Controllers
         public async Task<IActionResult> Index()
         {
             var books = await _bookService.GetAllBooks();
+            ViewBag.Authors = await _authorService.GetAllAuthors();
             return View(books);
         }
 

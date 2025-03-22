@@ -26,6 +26,7 @@ namespace BookManagementSystem.Services
         {
             var author = new Author
             {
+
                 FullName = authorDTO.FullName,
                 BirthDate = authorDTO.BirthDate,
                 City = authorDTO.City,
@@ -34,6 +35,8 @@ namespace BookManagementSystem.Services
 
             _dbContext.Authors.Add(author);
             await _dbContext.SaveChangesAsync();
+
+            authorDTO.Id = author.Id;
 
             return authorDTO;
         }
@@ -44,6 +47,7 @@ namespace BookManagementSystem.Services
             return await _dbContext.Authors
                 .Select(a => new AuthorDTO
                 {
+                    Id = a.Id,
                     FullName = a.FullName,
                     BirthDate = a.BirthDate,
                     City = a.City,
