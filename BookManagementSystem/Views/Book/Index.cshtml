@@ -7,7 +7,7 @@
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Book" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-person-plus-fill"></i>
+                <<i class="bi bi-journal-plus"></i>
                 Crear Nuevo Libro
             </a>
         </div>
@@ -44,6 +44,7 @@ else
                             var authors = ViewBag.Authors as List<BookManagementSystem.Dtos.AuthorDTO>;
                             var authorName = authors?.FirstOrDefault(a => a.Id == book.AuthorId)?.FullName ?? "Desconocido";
                         }
+                        @authorName
                     </td>
                 </tr>
             }
